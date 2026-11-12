@@ -6,7 +6,7 @@
 <meta name="description" content="Descend through five ocean zones and discover the creatures that call them home.">
 <title>Dive Into the Deep | An Interactive Ocean Expedition</title>
 <link rel="stylesheet" href="style.css">
-<script src="expedition.js" defer></script>
+<script src="expedition.js?v=restart-2" defer></script>
 </head>
 <body>
 <a class="skip" href="#sunlight">Skip to ocean zones</a>
@@ -15,7 +15,7 @@
 <nav aria-label="Expedition"><a href="#sunlight">Ocean zones</a><a href="#quiz">Quiz</a><a href="#sources">Sources</a></nav>
 </header>
 <main>
-<section id="surface" class="hero">
+<section id="surface" class="hero" tabindex="-1" aria-labelledby="expedition-title">
 <div class="wrap hero-copy">
 <p class="eyebrow"><span></span> AN INTERACTIVE OCEAN EXPEDITION</p>
 <h1 id="expedition-title" tabindex="-1">Dive Into<br><em>the Deep</em></h1>
@@ -39,7 +39,7 @@
 <h2>What did you discover?</h2>
 <form id="questions"></form>
 <p id="score" role="status"></p>
-<button id="restart" class="action restart" type="button">Restart Expedition <span aria-hidden="true">↑</span></button>
+<a id="restart" class="action restart" href="#surface">Restart Expedition <span aria-hidden="true">↑</span></a>
 </div>
 </section>
 </main>

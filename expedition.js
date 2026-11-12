@@ -209,7 +209,4 @@ document.querySelector('#restart').addEventListener('click', () => {
   form.reset();
   questions.forEach((_, i) => setText(`feedback-${i}`, ''));
   setText('score', '');
-  history.replaceState(history.state, '', '#surface');
-  document.querySelector('#expedition-title').focus({ preventScroll: true });
-  window.scrollTo({ top: 0 });
 });
