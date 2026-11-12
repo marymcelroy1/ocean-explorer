@@ -121,6 +121,7 @@ zones.forEach((zone, row) => {
   const link = document.createElement('a');
   link.href = `#${zone.id}`;
   link.textContent = zone.title.replace(' Zone', '');
+  link.setAttribute('aria-label', zone.title);
   link.style.top = `${row * 24 + 2}%`;
   depthLinks.append(link);
 });
@@ -136,6 +137,7 @@ dialog.addEventListener('click', event => {
 const sections = [...water.children];
 const sub = document.querySelector('#sub');
 let framePending = false;
+let currentZone = '';
 function updateDepth() {
   framePending = false;
   const probe = window.innerHeight * 0.22;
@@ -152,8 +154,14 @@ function updateDepth() {
   setText('reading', `${number.format(depth)} m`);
   sub.style.top = `${progress}%`;
   sub.style.setProperty("--progress", `${progress}%`);
+  const location = index < 0 ? 'Surface' :
+    sections[index].getBoundingClientRect().bottom <= probe ? 'Expedition complete' :
+    `${index + 1}/${zones.length} · ${zones[index].title}`;
+  if (location === currentZone) return;
+  currentZone = location;
+  setText('zone-progress', location);
   [...depthLinks.children].forEach((link, i) => {
-    if (i === index) link.setAttribute('aria-current', 'location');
+    if (i === index && location !== 'Expedition complete') link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   });
 }
@@ -174,6 +182,10 @@ const questions = [
   ['Where do hadal snailfish live?', ['Kelp forests', 'Sunlit coral reefs', 'Deep ocean trenches'], 2, 'Hadal snailfish inhabit certain deep Pacific trenches.']
 ];
 const form = document.querySelector('#questions');
+const titles = [
+  'Ocean Explorer in Training', 'Ocean Explorer in Training',
+  'Deep-Sea Adventurer', 'Master Ocean Explorer'
+];
 questions.forEach(([question, options], i) => {
   const field = document.createElement('fieldset');
   field.innerHTML = `<legend>${i + 1}. ${question}</legend>${options.map((option, j) =>
@@ -191,5 +203,13 @@ form.addEventListener('submit', event => {
     score += Number(matches);
     setText(`feedback-${i}`, `${matches ? 'Correct.' : 'Try again.'} ${explanation}`);
   });
-  setText('score', `You answered ${score} of ${questions.length} correctly.`);
+  setText('score', `${titles[score]} · ${score}/${questions.length} correct`);
+});
+document.querySelector('#restart').addEventListener('click', () => {
+  form.reset();
+  questions.forEach((_, i) => setText(`feedback-${i}`, ''));
+  setText('score', '');
+  history.replaceState(history.state, '', '#surface');
+  document.querySelector('#expedition-title').focus({ preventScroll: true });
+  window.scrollTo({ top: 0 });
 });

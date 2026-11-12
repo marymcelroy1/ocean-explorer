@@ -18,7 +18,7 @@
 <section id="surface" class="hero">
 <div class="wrap hero-copy">
 <p class="eyebrow"><span></span> AN INTERACTIVE OCEAN EXPEDITION</p>
-<h1>Dive Into<br><em>the Deep</em></h1>
+<h1 id="expedition-title" tabindex="-1">Dive Into<br><em>the Deep</em></h1>
 <p class="intro">Follow the light as it fades, meet the creatures that thrive in the dark, and descend into the deepest trenches on Earth.</p>
 <a class="action" href="#sunlight">Begin the descent <span aria-hidden="true">↓</span></a>
 </div>
@@ -26,6 +26,7 @@
 </section>
 <aside class="depth" aria-label="Expedition depth">
 <div class="depth-title"><span>DEPTH</span><strong id="reading">0 m</strong></div>
+<p id="zone-progress">Surface</p>
 <div class="track">
 <nav id="depth-links" aria-label="Jump to an ocean zone"></nav>
 <span id="sub" aria-hidden="true"><svg viewBox="0 0 28 18"><path d="M10 5V2h6v3M3 7l-2-2v9l2-2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="5" width="24" height="10" rx="5" fill="currentColor"/><circle cx="19" cy="10" r="2.5" fill="#062131"/></svg></span>
@@ -38,6 +39,7 @@
 <h2>What did you discover?</h2>
 <form id="questions"></form>
 <p id="score" role="status"></p>
+<button id="restart" class="action restart" type="button">Restart Expedition <span aria-hidden="true">↑</span></button>
 </div>
 </section>
 </main>

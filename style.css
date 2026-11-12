@@ -19,3 +19,107 @@ dialog{padding:0;width:min(500px,calc(100% - 2rem));max-height:calc(100% - 2rem)
   #depth-links{display:none}
   #sub{left:var(--progress);top:50%!important;transform:translate(-50%,-50%);width:17px}
 }
+
+#zone-progress {
+  margin: .4rem 0 .2rem;
+  color: var(--mint);
+  font-size: .73rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#depth-links a {
+  min-height: 28px;
+}
+
+#depth-links a[aria-current] {
+  font-weight: 700;
+}
+
+#depth-links a[aria-current]::before {
+  box-shadow: 0 0 0 3px #8ff8df40;
+}
+
+.restart {
+  background: transparent;
+  color: var(--mint);
+  border: 1px solid var(--edge);
+}
+
+.restart:hover {
+  background: #8ff8df18;
+}
+
+#score {
+  color: var(--mint);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.creature .plus {
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.creature:is(:hover, :focus-visible) .plus {
+  background-color: var(--mint);
+  color: #032733;
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    animation: reveal-profile .22s ease-out;
+  }
+
+  @keyframes reveal-profile {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creature .plus { transition: none; }
+  .creature:is(:hover, :focus-visible) .plus { transform: none; }
+}
+
+@media (max-width: 750px) {
+  .depth {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 .75rem;
+    width: min(250px, calc(100% - 1.3rem));
+  }
+
+  #zone-progress {
+    margin: 0;
+    text-align: right;
+  }
+
+  .track {
+    grid-column: 1 / -1;
+    width: auto;
+    height: 37px;
+    margin: 0;
+  }
+
+  .track::before { inset: 18px 10% auto; width: 80%; }
+
+  #depth-links {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  #depth-links a {
+    position: relative;
+    inset: auto !important;
+    transform: none;
+    width: auto;
+    min-height: 37px;
+    justify-content: center;
+    font-size: 0;
+  }
+
+  #depth-links a::before { width: 7px; height: 7px; }
+  #sub { left: calc(10% + var(--progress) * .8); transform: translate(-50%, -100%); }
+  footer { padding-bottom: 8rem; }
+}
