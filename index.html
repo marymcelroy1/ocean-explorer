@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Descend through five ocean zones and discover the creatures that call them home.">
+<title>Dive Into the Deep | An Interactive Ocean Expedition</title>
+<link rel="stylesheet" href="style.css">
+<script src="expedition.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#sunlight">Skip to ocean zones</a>
+<header>
+<a class="brand" href="#surface"><span aria-hidden="true">◈</span> OCEAN EXPLORER</a>
+<nav aria-label="Expedition"><a href="#sunlight">Ocean zones</a><a href="#quiz">Quiz</a><a href="#sources">Sources</a></nav>
+</header>
+<main>
+<section id="surface" class="hero">
+<div class="wrap hero-copy">
+<p class="eyebrow"><span></span> AN INTERACTIVE OCEAN EXPEDITION</p>
+<h1>Dive Into<br><em>the Deep</em></h1>
+<p class="intro">Follow the light as it fades, meet the creatures that thrive in the dark, and descend into the deepest trenches on Earth.</p>
+<a class="action" href="#sunlight">Begin the descent <span aria-hidden="true">↓</span></a>
+</div>
+<div class="hero-caption wrap"><span>SURFACE · 0 M</span><span>SCROLL TO DESCEND ↓</span></div>
+</section>
+<aside class="depth" aria-label="Expedition depth">
+<div class="depth-title"><span>DEPTH</span><strong id="reading">0 m</strong></div>
+<div class="track">
+<nav id="depth-links" aria-label="Jump to an ocean zone"></nav>
+<span id="sub" aria-hidden="true"><svg viewBox="0 0 28 18"><path d="M10 5V2h6v3M3 7l-2-2v9l2-2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="5" width="24" height="10" rx="5" fill="currentColor"/><circle cx="19" cy="10" r="2.5" fill="#062131"/></svg></span>
+</div>
+</aside>
+<div id="water"></div>
+<section id="quiz" class="quiz">
+<div class="wrap">
+<p class="eyebrow">END OF THE EXPEDITION</p>
+<h2>What did you discover?</h2>
+<form id="questions"></form>
+<p id="score" role="status"></p>
+</div>
+</section>
+</main>
+<footer id="sources">
+<div class="wrap">
+<h2>Expedition sources</h2>
+<p>Creature illustrations and underwater scene generated for this expedition. Depth ranges are approximate and many organisms occupy more than one zone.</p>
+<ul>
+<li><a href="https://oceanexplorer.noaa.gov/ocean-fact/light-distributed/">NOAA Ocean Exploration · Light in the ocean</a></li>
+<li><a href="https://www.whoi.edu/ocean-learning-hub/ocean-topics/how-the-ocean-works/ocean-zones/">Woods Hole Oceanographic Institution · Ocean zones</a></li>
+<li><a href="https://ocean.si.edu/">Smithsonian Ocean</a></li>
+<li><a href="https://www.fisheries.noaa.gov/feature-story/diving-creatures-deep">NOAA Fisheries · Diving into Creatures of the Deep</a></li>
+<li><a href="https://www.mbari.org/education/animals-of-the-deep/">MBARI · Animals of the Deep</a></li>
+</ul>
+<a href="#surface">↑ Return to the surface</a>
+</div>
+</footer>
+<dialog id="specimen" aria-labelledby="animal-name">
+<button class="close" type="button" aria-label="Close organism profile">×</button>
+<div id="animal-art" class="art" role="img"></div>
+<div class="profile">
+<p id="animal-zone" class="eyebrow"></p>
+<h2 id="animal-name"></h2>
+<p id="animal-latin"></p>
+<h3>Habitat</h3><p id="animal-habitat"></p>
+<h3>Field note</h3><p id="animal-fact"></p>
+<a id="animal-source" target="_blank" rel="noopener">Read the source ↗</a>
+</div>
+</dialog>
+</body>
+</html>
